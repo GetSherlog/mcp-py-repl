@@ -15,6 +15,7 @@ dependencies = [
     "aiohttp",
     "pyyaml",
     "asyncio",
+    "fastapi>=0.100.0",
 ]
 authors = [{ name = "evalstate"}]
 license = "MIT"

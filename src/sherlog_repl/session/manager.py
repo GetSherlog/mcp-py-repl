@@ -177,7 +177,8 @@ class SessionManager:
             The retrieved or newly created session.
         """
         if session_id and session_id in self.sessions:
-            session = await self.get_session(session_id)
+            session = self.sessions[session_id]
+            session.update_last_active()
             return session
         return await self.create_session(session_id, user_context)
     

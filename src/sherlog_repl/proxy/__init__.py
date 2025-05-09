@@ -1,1 +1,10 @@
-"""\nProxy package for the Sherlog REPL.\nGenerates Python proxies for MCP tools.\n"""\n\nfrom .generator import ToolProxyGenerator\n\n__all__ = [\n    'ToolProxyGenerator',\n]
+"""
+Proxy package for the Sherlog REPL.
+Generates Python proxies for MCP tools.
+"""
+
+from .generator import ToolProxyGenerator
+
+__all__ = [
+    'ToolProxyGenerator',
+]
