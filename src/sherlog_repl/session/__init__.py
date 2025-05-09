@@ -1,0 +1,1 @@
+"""\nSession package for the Sherlog REPL.\nManages user sessions and their state.\n"""\n\nfrom .manager import Session, SessionManager\n\n__all__ = [\n    'Session',\n    'SessionManager',\n]

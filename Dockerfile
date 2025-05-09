@@ -16,7 +16,7 @@ RUN --mount=type=cache,target=/root/.cache/uv \
 
 # Verify installation (separate step for better error visibility)
 RUN . .venv/bin/activate && \
-    python -c "import mcp_py_repl" || { echo "Package import failed"; exit 1; }
+    python -c "import sherlog_repl" || { echo "Package import failed"; exit 1; }
 
 FROM python:3.12-slim-bookworm
 
@@ -35,4 +35,4 @@ COPY --chown=app:app src/ ./src/
 ENV PATH="/app/.venv/bin:$PATH"
 ENV PYTHONPATH="/app/src"
 
-ENTRYPOINT ["mcp-py-repl"]
+ENTRYPOINT ["sherlog-repl"]
