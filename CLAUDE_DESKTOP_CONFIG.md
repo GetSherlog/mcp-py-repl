@@ -27,11 +27,12 @@ This guide explains how to configure Claude Desktop to use the MCP-PY-REPL serve
      - URL: `http://localhost:8080`
      - Authentication: None
 
-## Option 2: Using Docker
+## Option 2: Using Docker (Pre-built Image)
 
 ### Prerequisites
 - Docker Desktop installed and running
 - Claude Desktop
+- GitHub authentication for Container Registry (for private images)
 
 ### Setup
 
@@ -56,7 +57,45 @@ This guide explains how to configure Claude Desktop to use the MCP-PY-REPL serve
 }
 ```
 
-## Option 3: Using Sherlog-REPL (Advanced)
+## Option 3: Using Locally-Built Docker Image
+
+### Prerequisites
+- Docker Desktop installed and running
+- Claude Desktop
+
+### Setup
+
+1. Build the Docker image locally from the repo:
+   ```bash
+   # Navigate to the repository directory
+   cd /path/to/mcp-py-repl
+
+   # Build the Docker image
+   docker build -t sherlog-repl-local .
+   ```
+
+2. Configure Claude Desktop with this JSON configuration (modify your settings.json):
+
+```json
+{
+  "mcp": {
+    "servers": {
+      "python-repl": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-i",
+          "--rm",
+          "--mount", "type=bind,src=${workspaceFolder},dst=/projects/workspace",
+          "sherlog-repl-local"
+        ]
+      }
+    }
+  }
+}
+```
+
+## Option 4: Using Sherlog-REPL (Advanced)
 
 For a more feature-rich experience with access to GitHub, filesystem, and Jira tools:
 
